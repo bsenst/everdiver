@@ -7,6 +7,8 @@ falcon offers the chance to deploy an open-source large language model locally. 
 - [ ] deploy/serve falcon llm locally or in private free cloud environment (kaggle, colab)
 - [ ] connect enex data to deployed llm using tools such as llamaindex or langchain
 
+![image](https://github.com/bsenst/everdiver/assets/8211411/4738a376-16fb-43a6-90b8-5f487db92e23)
+
 # everdiver
 
 evernote does not offer the possibility to analyze the collected notes. python can be used to access the local evernote database and analyze the information it contains.
