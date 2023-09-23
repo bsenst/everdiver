@@ -1,3 +1,4 @@
 pandas
 langchain
 streamlit
+sentence_transformers
