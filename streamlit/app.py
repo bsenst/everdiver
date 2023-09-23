@@ -21,12 +21,16 @@ with st.sidebar:
 
 PAT = clarifai_pat if clarifai_pat else st.secrets.CLARIFAI_PAT
 
-embeddings = ClarifaiEmbeddings(
-    pat=PAT,
-    user_id="openai",
-    app_id="embed",
-    model_id="text-embedding-ada"
-)
+# embeddings = ClarifaiEmbeddings(
+#     pat=PAT,
+#     user_id="openai",
+#     app_id="embed",
+#     model_id="text-embedding-ada"
+# )
+
+from langchain.embeddings import FakeEmbeddings
+
+embeddings = FakeEmbeddings(size=1352)
 
 @st.cache_resource()
 def get_document():
@@ -37,7 +41,7 @@ def get_document():
     return documents
 
 if st.secrets.ENV == "dev":
-    documents = utils.get_document()
+    documents = get_document()
     vectorstore = FAISS.from_documents(documents, embeddings)
     vectorstore.save_local("vectorstore")
 else:
