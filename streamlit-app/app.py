@@ -82,12 +82,12 @@ for msg in msgs.messages:
 if question := st.chat_input("Send a message"):
     st.chat_message("human").write(question)
     with st.chat_message("ai"):
-        with st.spinner(text="Thinking..."):
+        with st.spinner(text="Processing..."):
             try:
                 response = qa_chain(question)
                 st.markdown(response["result"])
                 print(response["source_documents"])
             except Exception as e:
                 print(e)
-                st.error("Oops! Something went wrong.")
+                st.error("Oops! Something went wrong. Try another Query!")
                 st.stop()        
