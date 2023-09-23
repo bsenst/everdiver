@@ -50,6 +50,7 @@ streamlit run streamlit-app/app.py
 * https://github.com/bentoml/OpenLLM
 * https://github.com/vllm-project/vllm
 * https://github.com/skypilot-org/skypilot
+* https://github.com/basetenlabs/truss-examples
 * https://github.com/TimDettmers/bitsandbytes Quantization GPU
 
 # Everdiver
