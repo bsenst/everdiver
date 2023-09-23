@@ -1,0 +1,6 @@
+pandas
+re
+langchain
+streamlit
+random
+time

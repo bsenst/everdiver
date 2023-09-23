@@ -1,6 +1,9 @@
+from langchain.embeddings import HuggingFaceEmbeddings, SentenceTransformerEmbeddings
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import StreamlitChatMessageHistory
 from langchain.memory import ConversationBufferWindowMemory
+from langchain import PromptTemplate, LLMChain
+from langchain.chains import RetrievalQA
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import ClarifaiEmbeddings
@@ -10,21 +13,13 @@ from langchain.llms import Clarifai
 import streamlit as st
 import random
 import time
+import re
 
 st.title("Welcome")
 
 PAT = st.secrets.CLARIFAI_PAT
 
-# embeddings = ClarifaiEmbeddings(
-#     pat=PAT,
-#     user_id="openai",
-#     app_id="embed",
-#     model_id="text-embedding-ada"
-# )
-
-from langchain.embeddings import FakeEmbeddings
-
-embeddings = FakeEmbeddings(size=1352)
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 @st.cache_resource()
 def get_document():
@@ -39,7 +34,7 @@ if st.secrets.ENV == "dev":
     vectorstore = FAISS.from_documents(documents, embeddings)
     vectorstore.save_local("vectorstore")
 else:
-    vectorstore = FAISS.load_local("model", embeddings)
+    vectorstore = FAISS.load_local("vectorstore", embeddings)
 
 retriever = vectorstore.as_retriever(search_kwargs={'k': 1})
 
@@ -51,22 +46,6 @@ llm = Clarifai(
     app_id="falcon",
     model_id="falcon-40b-instruct"
 )
-
-# memory = ConversationBufferWindowMemory(
-#     chat_memory=msgs,
-#     return_messages=True,
-#     memory_key="chat_history",
-#     k=6
-# )
-
-# conversation = ConversationalRetrievalChain.from_llm(
-#     llm=llm,
-#     retriever=retriever,
-#     memory=memory,
-#     verbose=True if st.secrets.ENV == "dev" else False
-# )
-
-from langchain import PromptTemplate, LLMChain
 
 prompt_template = """
 Don't try to make up an answer, if you don't know just say that you don't know.
@@ -83,8 +62,6 @@ PROMPT = PromptTemplate(
     template = prompt_template, 
     input_variables = ["context", "question"]
 )
-
-from langchain.chains import RetrievalQA
 
 qa_chain = RetrievalQA.from_chain_type(
     llm = llm,
@@ -110,14 +87,8 @@ if question := st.chat_input("Send a message"):
             try:
                 response = qa_chain(question)
                 st.markdown(response["result"])
+                print(response["source_documents"])
             except Exception as e:
-                error_string = str(e)
-                pattern = r'"(.*?)"'
-                match = re.findall(pattern, error_string)
-                try:
-                    error_desc = match[0]
-                except:
-                    error_desc = error_string
-                response = "Oops! Something went wrong. Error: " + error_desc
-                st.error(response)
+                print(e)
+                st.error("Oops! Something went wrong.")
                 st.stop()        

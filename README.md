@@ -9,11 +9,13 @@ falcon offers the chance to deploy an open-source large language model locally. 
 
 ![image](https://github.com/bsenst/everdiver/assets/8211411/4738a376-16fb-43a6-90b8-5f487db92e23)
 
+## Run the Application
+
 ```
 streamlit run streamlit-app/app.py
 ```
 
-# Examples of the Application
+## Example Use Cases
 
 **When will be lunch break according to the schedule on Friday?**
 
@@ -22,6 +24,14 @@ streamlit run streamlit-app/app.py
 **Which books on my reading list are authored by Jack London?**
 
 > "The Call of the Wild", "White Fang", and "The Sea-Wolf" are all authored by Jack London.
+
+**Which sections does the essay have?**
+
+> The essay has three sections: 1. Introduction 2. Body 3. Conclusion
+
+**What is the project about that is described in the project plan?**
+
+> The project plan describes the process of building a chain of ice cream shops in the local region.
 
 ![image](https://github.com/bsenst/everdiver/assets/8211411/30904bf9-b95e-4150-b8fe-284c07841aab)
 
@@ -34,6 +44,7 @@ streamlit run streamlit-app/app.py
 
 ## Serving open-source LLMs
 
+* https://github.com/nomic-ai/gpt4all
 * https://github.com/bentoml/OpenLLM
 * https://github.com/vllm-project/vllm
 * https://github.com/skypilot-org/skypilot
