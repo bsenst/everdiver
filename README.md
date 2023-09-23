@@ -4,14 +4,19 @@ falcon offers the chance to deploy an open-source large language model locally. 
 
 - [X] create dummy evernote data
 - [X] extract data from evernote exported enex file
-- [ ] deploy/serve falcon llm locally or in private free cloud environment (kaggle, colab)
-- [ ] connect enex data to deployed llm using tools such as llamaindex or langchain
+- [X] deploy/serve falcon llm locally or in private free cloud environment (kaggle, colab, saturncloud) or connect to hosting service (clarifai)
+- [X] connect enex data to deployed llm using tools such as llamaindex or langchain
 
 ![image](https://github.com/bsenst/everdiver/assets/8211411/4738a376-16fb-43a6-90b8-5f487db92e23)
 
+```
+streamlit run streamlit-app/app.py
+```
+
 ## references
 
-* https://github.com/putuwaw/docutalk
+* https://github.com/putuwaw/docutalk *Apache 2.0 open source license*
+* https://www.kaggle.com/code/hinepo/q-a-chatbot-with-llms-harry-potter *Apache 2.0 open source license*
 
 ## serving llm
 

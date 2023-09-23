@@ -13,13 +13,7 @@ import time
 
 st.title("Welcome")
 
-with st.sidebar:
-    clarifai_pat = st.text_input(
-        "Clarifai PAT", type="password",
-        help="The PAT is provided by default, but you can input your own.")
-    "[Get your Clarifai PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens/)"
-
-PAT = clarifai_pat if clarifai_pat else st.secrets.CLARIFAI_PAT
+PAT = st.secrets.CLARIFAI_PAT
 
 # embeddings = ClarifaiEmbeddings(
 #     pat=PAT,
@@ -111,20 +105,19 @@ for msg in msgs.messages:
 
 if question := st.chat_input("Send a message"):
     st.chat_message("human").write(question)
-    print(question)
     with st.chat_message("ai"):
         with st.spinner(text="Thinking..."):
             try:
                 response = qa_chain(question)
+                st.markdown(response["result"])
             except Exception as e:
-                st.error(e)
-                st.stop()
-        print(response)
-        # full_response = ""
-        # placeholder = st.empty()
-        # for chunk in response.split():
-        #     full_response += chunk + " "
-        #     time.sleep(random.uniform(0, 0.3))
-        #     placeholder.markdown(full_response)
-        # placeholder.markdown(response)
-        st.markdown(response["result"])
+                error_string = str(e)
+                pattern = r'"(.*?)"'
+                match = re.findall(pattern, error_string)
+                try:
+                    error_desc = match[0]
+                except:
+                    error_desc = error_string
+                response = "Oops! Something went wrong. Error: " + error_desc
+                st.error(response)
+                st.stop()        
