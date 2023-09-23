@@ -1,6 +1,8 @@
-# Enhancing Your Personal Notes with LLMs - LabLab.ai Falcon LLM Hackathon
+# Enhancing Your Personal Notes with LLMs
 
-falcon offers the chance to deploy an open-source large language model locally. this allows to preserve privacy working with your personal evernote data. as such this project is part of the [lablabai falcon hackathon](https://lablab.ai/event/falcon-llms-24-hours-hackathon/fritzlabs).
+*LabLab.ai Falcon LLM Hackathon*
+
+Falcon is an open-source LLM from the Technology Innovation Institute. Falcon offers the chance to deploy an open-source large language model locally. This allows to preserve privacy working with your personal evernote data. As such this project is part of the [lablabai falcon hackathon](https://lablab.ai/event/falcon-llms-24-hours-hackathon/fritzlabs).
 
 - [X] create dummy evernote data
 - [X] extract data from evernote exported enex file

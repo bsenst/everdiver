@@ -8,7 +8,6 @@ from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import ClarifaiEmbeddings
 from langchain.vectorstores import FAISS
-from st_pages import Page, show_pages
 from langchain.llms import Clarifai
 import streamlit as st
 import random
