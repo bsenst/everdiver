@@ -3,3 +3,4 @@ langchain
 streamlit
 sentence-transformers
 faiss-cpu
+clarifai
