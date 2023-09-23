@@ -9,6 +9,13 @@ falcon offers the chance to deploy an open-source large language model locally. 
 
 ![image](https://github.com/bsenst/everdiver/assets/8211411/4738a376-16fb-43a6-90b8-5f487db92e23)
 
+## serving llm
+
+* https://github.com/bentoml/OpenLLM
+* https://github.com/vllm-project/vllm
+* https://github.com/skypilot-org/skypilot
+* https://github.com/TimDettmers/bitsandbytes Quantization GPU
+
 # everdiver
 
 evernote does not offer the possibility to analyze the collected notes. python can be used to access the local evernote database and analyze the information it contains.
