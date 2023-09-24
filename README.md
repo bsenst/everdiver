@@ -11,7 +11,7 @@ Falcon is an open-source LLM from the Technology Innovation Institute. Falcon of
 - [X] deploy/serve falcon llm locally or in private free cloud environment (kaggle, colab, saturncloud) or connect to hosting service (clarifai)
 - [X] connect enex data to deployed llm using tools such as llamaindex or langchain
 
-![image](https://github.com/bsenst/everdiver/assets/8211411/4738a376-16fb-43a6-90b8-5f487db92e23)
+![image](https://github.com/bsenst/everdiver/assets/8211411/429d3bd3-42be-4d2b-8b17-249ff1d345f5)
 
 ## Run the Application
 
